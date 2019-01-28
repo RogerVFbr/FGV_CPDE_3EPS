@@ -21,5 +21,9 @@ s = pd.Series(s.index.values, index=s) # Reinverter para manter numerais como in
 s = s.append(pd.Series([s.mean()], index=['Geral']))
 
 sns.set()
-s.plot(kind='bar', title='Questão 2 - Média de duração por agência e total', fontsize=10)
+ax = s.plot(kind='bar', title='Questão 2 - Média de duração por agência e total', fontsize=10)
+
+for x in ax.patches:
+    ax.annotate('~ '+str(int(round(x.get_height()))), (x.get_x()*1.005 + x.get_width()/2, x.get_height()*1.005), fontsize=6, ha='center')
+
 plt.show()

@@ -23,7 +23,11 @@ s_1a = df['AgenciaInt'].value_counts().sort_index() # Criar Serie com total de p
 s_1a = pd.Series(s_1a.index.values, index=s_1a) # Inverter indice com valores
 s_1a = s_1a.apply(roman.toRoman) # Aplicar funcao conversora
 s_1a = pd.Series(s_1a.index.values, index=s_1a) # Reinverter para manter numerais como indice
-s_1a.plot(kind='bar', ax=axes[0,0], title='a. Agência', fontsize=10)
+ax_1a = s_1a.plot(kind='bar', ax=axes[0,0], title='a. Agência', fontsize=10)
+
+for x in ax_1a.patches:
+    ax_1a.annotate(str(x.get_height()), (x.get_x()*1.005 + x.get_width()/2,
+                                                          x.get_height()*1.005), fontsize=6, ha='center')
 
 
 # ===============================================================================================================
@@ -31,7 +35,11 @@ s_1a.plot(kind='bar', ax=axes[0,0], title='a. Agência', fontsize=10)
 # ===============================================================================================================
 
 s_1b = df['Exercicio_Apurado'].value_counts().sort_index() # Criar Serie com total de processos
-s_1b.plot(kind='bar', ax=axes[0,1], title='b. Ano', fontsize=10)
+ax_1b = s_1b.plot(kind='bar', ax=axes[0,1], title='b. Ano', fontsize=10)
+
+for x in ax_1b.patches:
+    ax_1b.annotate(str(x.get_height()), (x.get_x()*1.005 + x.get_width()/2,
+                                                          x.get_height()*1.005), fontsize=6, ha='center')
 
 
 # ===============================================================================================================
@@ -59,7 +67,11 @@ d.plot(ax=large_left_ax, title='c. Agência / Ano', fontsize=10)
 # ===============================================================================================================
 
 s_1d = df['Relator'].value_counts().sort_index() # Criar Serie com total de processos
-s_1d.plot(kind='bar', ax=axes[0,2], title='d. Relator', fontsize=10)
+ax_1d = s_1d.plot(kind='bar', ax=axes[0,2], title='d. Relator', fontsize=10)
+
+for x in ax_1d.patches:
+    ax_1d.annotate(str(x.get_height()), (x.get_x()*1.005 + x.get_width()/2,
+                                                          x.get_height()*1.005), fontsize=6, ha='center')
 
 
 # ===============================================================================================================
@@ -70,7 +82,11 @@ s_1e = df['Quantidade_Relatores'].value_counts().sort_index() # Criar Serie com 
 s_1e = pd.Series(s_1e.index.values, index=s_1e) # Inverter indice com valores
 s_1e = s_1e.apply(int) # Aplicar funcao conversora
 s_1e = pd.Series(s_1e.index.values, index=s_1e) # Reinverter para manter numerais como indice
-s_1e.plot(kind='bar', ax=axes[1,2], title='e. Quantidade de relatores', fontsize=10)
+ax_1e = s_1e.plot(kind='bar', ax=axes[1,2], title='e. Quantidade de relatores', fontsize=10)
+
+for x in ax_1e.patches:
+    ax_1e.annotate(str(x.get_height()), (x.get_x()*1.005 + x.get_width()/2,
+                                                          x.get_height()*1.005), fontsize=6, ha='center')
 
 
 # ===============================================================================================================
@@ -78,7 +94,11 @@ s_1e.plot(kind='bar', ax=axes[1,2], title='e. Quantidade de relatores', fontsize
 # ===============================================================================================================
 
 s_1d = df['Unidade_Tecnica_Por_Agir'].value_counts().sort_index() # Criar Serie com total de processos
-s_1d.plot(kind='bar', ax=axes[2,2], title='f. Unidade técnica', fontsize=10)
+ax_1d = s_1d.plot(kind='bar', ax=axes[2,2], title='f. Unidade técnica', fontsize=10)
+
+for x in ax_1d.patches:
+    ax_1d.annotate(str(x.get_height()), (x.get_x()*1.005 + x.get_width()/2,
+                                                          x.get_height()*1.005), fontsize=6, ha='center')
 
 yint = []
 locs, labels = plt.yticks()

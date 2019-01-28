@@ -36,6 +36,8 @@ large_left_ax = plt.subplot2grid((2,3), (0,0), colspan=2, rowspan=1)
 result_3a.plot.bar(legend=False, ax=large_left_ax, title='a. Agência / Processo', fontsize=10)
 
 
+
+
 # ===============================================================================================================
 #                                                  QUESTAO 3b
 # ===============================================================================================================
@@ -46,7 +48,11 @@ result_3b = pd.Series(result_3b.index.values, index=result_3b) # Inverter indice
 result_3b = result_3b.apply(int) # Aplicar funcao conversora
 result_3b = pd.Series(result_3b.index.values, index=result_3b) # Reinverter para manter numerais como indice
 title = 'b. Ano (Total: {})'.format(result_3b.sum())
-result_3b.plot.bar(legend=False, ax=axes[0,2], title=title, fontsize=10)
+ax_3b = result_3b.plot.bar(legend=False, ax=axes[0,2], title=title, fontsize=10)
+
+for x in ax_3b.patches:
+    ax_3b.annotate(str(x.get_height()), (x.get_x()*1.005 + x.get_width()/2,
+                                                          x.get_height()*1.005), fontsize=6, ha='center')
 
 
 # ===============================================================================================================
@@ -55,7 +61,11 @@ result_3b.plot.bar(legend=False, ax=axes[0,2], title=title, fontsize=10)
 
 result_3c = df.groupby('Relator')['quant_responsaveis'].sum()
 result_3c.index.name = ''
-result_3c.plot.bar(legend=False, ax=axes[1,0], title='c. Relator', fontsize=10)
+ax_3c = result_3c.plot.bar(legend=False, ax=axes[1,0], title='c. Relator', fontsize=10)
+
+for x in ax_3c.patches:
+    ax_3c.annotate(str(x.get_height()), (x.get_x()*1.005 + x.get_width()/2,
+                                                          x.get_height()*1.005), fontsize=6, ha='center')
 
 
 # ===============================================================================================================
@@ -64,7 +74,11 @@ result_3c.plot.bar(legend=False, ax=axes[1,0], title='c. Relator', fontsize=10)
 
 result_3d = df.groupby('Unidade_Tecnica_Responsavel')['quant_responsaveis'].sum()
 result_3d.index.name = ''
-result_3d.plot.bar(legend=False, ax=axes[1,1], title='d. Unidade técnica', fontsize=10)
+ax_3d = result_3d.plot.bar(legend=False, ax=axes[1,1], title='d. Unidade técnica', fontsize=10)
+
+for x in ax_3d.patches:
+    ax_3d.annotate(str(x.get_height()), (x.get_x()*1.005 + x.get_width()/2,
+                                                          x.get_height()*1.005), fontsize=6, ha='center')
 
 
 # ===============================================================================================================
@@ -73,7 +87,11 @@ result_3d.plot.bar(legend=False, ax=axes[1,1], title='d. Unidade técnica', font
 
 result_3e = df.groupby('Unidade_Tecnica_Por_Agir')['quant_responsaveis'].sum()
 result_3e.index.name = ''
-result_3e.plot.bar(legend=False, ax=axes[1,2], title='e. Unidade técnica agir', fontsize=10)
+ax_3e = result_3e.plot.bar(legend=False, ax=axes[1,2], title='e. Unidade técnica agir', fontsize=10)
+
+for x in ax_3e.patches:
+    ax_3e.annotate(str(x.get_height()), (x.get_x()*1.005 + x.get_width()/2,
+                                                          x.get_height()*1.005), fontsize=6, ha='center')
 
 
 plt.show()

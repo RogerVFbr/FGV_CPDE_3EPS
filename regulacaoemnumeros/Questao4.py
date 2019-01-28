@@ -35,7 +35,11 @@ for x in agencias:
                 d_4a[main_index]['OK'] += 1
 
 result_3a = pd.DataFrame.from_dict(d_4a, orient='index')
-result_3a.plot.bar(ax=axes[0,0], title='a. Agência', fontsize=10)
+ax_4a = result_3a.plot.bar(ax=axes[0,0], title='a. Agência', fontsize=10)
+
+for x in ax_4a.patches:
+    ax_4a.annotate(str(x.get_height()), (x.get_x()*1.005 + x.get_width()/2,
+                                                          x.get_height()*1.005), fontsize=6, ha='center')
 
 
 # ===============================================================================================================
@@ -57,7 +61,11 @@ for x in anos:
                 d_4b[x]['OK'] += 1
 
 result_4b = pd.DataFrame.from_dict(d_4b, orient='index')
-result_4b.plot.bar(ax=axes[0, 1], title='b. Ano', fontsize=10)
+ax_4b = result_4b.plot.bar(ax=axes[0, 1], title='b. Ano', fontsize=10)
+
+for x in ax_4b.patches:
+    ax_4b.annotate(str(x.get_height()), (x.get_x()*1.005 + x.get_width()/2,
+                                                          x.get_height()*1.005), fontsize=6, ha='center')
 
 
 # ===============================================================================================================
@@ -80,8 +88,12 @@ for x in relatores:
 
 result_4c = pd.DataFrame.from_dict(d_4c, orient='index')
 large_left_ax = plt.subplot2grid((3,2), (1,0), colspan=2, rowspan=1)
-result_4c.plot.bar(ax=large_left_ax, title='c. Relator', fontsize=10)
+ax_4c = result_4c.plot.bar(ax=large_left_ax, title='c. Relator', fontsize=10)
 
+
+for x in ax_4c.patches:
+    ax_4c.annotate(str(x.get_height()), (x.get_x()*1.005 + x.get_width()/2,
+                                                          x.get_height()*1.005), fontsize=6, ha='center')
 
 
 # ===============================================================================================================
@@ -103,7 +115,11 @@ for x in unidades:
                 d_4d[x]['OK'] += 1
 
 result_4d = pd.DataFrame.from_dict(d_4d, orient='index')
-result_4d.plot.bar(ax=axes[2,0], title='d. Unidade técnica', fontsize=10)
+ax_4d = result_4d.plot.bar(ax=axes[2,0], title='d. Unidade técnica', fontsize=10)
+
+for x in ax_4d.patches:
+    ax_4d.annotate(str(x.get_height()), (x.get_x()*1.005 + x.get_width()/2,
+                                                          x.get_height()*1.005), fontsize=6, ha='center')
 
 
 # ===============================================================================================================
@@ -125,7 +141,11 @@ for x in agir:
                 d_4e[x]['OK'] += 1
 
 result_4e = pd.DataFrame.from_dict(d_4e, orient='index')
-result_4e.plot.bar(ax=axes[2,1], title='e. Unidade técnica agir', fontsize=10)
+ax_4e = result_4e.plot.bar(ax=axes[2,1], title='e. Unidade técnica agir', fontsize=10)
+
+for x in ax_4e.patches:
+    ax_4e.annotate(str(x.get_height()), (x.get_x()*1.005 + x.get_width()/2,
+                                                          x.get_height()*1.005), fontsize=6, ha='center')
 
 
 plt.show()

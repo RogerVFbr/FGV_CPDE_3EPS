@@ -24,7 +24,11 @@ result_5a = pd.Series(result_5a.index.values, index=result_5a) # Inverter indice
 result_5a = result_5a.apply(roman.toRoman) # Aplicar funcao conversora
 result_5a = pd.Series(result_5a.index.values, index=result_5a) # Reinverter para manter numerais como indice
 ax_5a = plt.subplot2grid(grid, (0,0), colspan=2, rowspan=1)
-result_5a.plot.bar(ax=ax_5a, title='a. Agência', fontsize=10)
+ax_5a = result_5a.plot.bar(ax=ax_5a, title='a. Agência', fontsize=10)
+
+for x in ax_5a.patches:
+    ax_5a.annotate(str(int(x.get_height())), (x.get_x()*1.005 + x.get_width()/2,
+                                                          x.get_height()*1.005), fontsize=6, ha='center')
 
 
 # ===============================================================================================================
@@ -37,7 +41,11 @@ result_5b = result_5b.apply(int) # Aplicar funcao conversora
 result_5b = pd.Series(result_5b.index.values, index=result_5b) # Reinverter para manter numerais como indice
 title_5b = 'b. Ano (Total: {})'.format(result_5b.sum())
 ax_5b = plt.subplot2grid(grid, (0,2), colspan=2, rowspan=1)
-result_5b.plot.bar(ax=ax_5b, title=title_5b, fontsize=10)
+ax_5b = result_5b.plot.bar(ax=ax_5b, title=title_5b, fontsize=10)
+
+for x in ax_5b.patches:
+    ax_5b.annotate(str(int(x.get_height())), (x.get_x()*1.005 + x.get_width()/2,
+                                                          x.get_height()*1.005), fontsize=6, ha='center')
 
 
 # ===============================================================================================================
@@ -47,7 +55,11 @@ result_5b.plot.bar(ax=ax_5b, title=title_5b, fontsize=10)
 result_5c = df.groupby('Relator')['deliberacoes_quantidade'].sum()
 result_5c.index.name = ''
 ax_5c = plt.subplot2grid(grid, (1,0), colspan=2, rowspan=1)
-result_5c.plot.bar(ax=ax_5c, title='c. Relator', fontsize=10)
+ax_5c = result_5c.plot.bar(ax=ax_5c, title='c. Relator', fontsize=10)
+
+for x in ax_5c.patches:
+    ax_5c.annotate(str(int(x.get_height())), (x.get_x()*1.005 + x.get_width()/2,
+                                                          x.get_height()*1.005), fontsize=6, ha='center')
 
 
 # ===============================================================================================================
@@ -57,7 +69,11 @@ result_5c.plot.bar(ax=ax_5c, title='c. Relator', fontsize=10)
 result_5d = df.groupby('Unidade_Tecnica_Responsavel')['deliberacoes_quantidade'].sum()
 result_5d.index.name = ''
 ax_5d = plt.subplot2grid(grid, (1,2), colspan=1, rowspan=1)
-result_5d.plot.bar(ax=ax_5d, title='d. Unidade técnica', fontsize=10)
+ax_5d = result_5d.plot.bar(ax=ax_5d, title='d. Unidade técnica', fontsize=10)
+
+for x in ax_5d.patches:
+    ax_5d.annotate(str(int(x.get_height())), (x.get_x()*1.005 + x.get_width()/2,
+                                                          x.get_height()*1.005), fontsize=6, ha='center')
 
 
 # ===============================================================================================================
@@ -67,7 +83,11 @@ result_5d.plot.bar(ax=ax_5d, title='d. Unidade técnica', fontsize=10)
 result_5e = df.groupby('Unidade_Tecnica_Por_Agir')['deliberacoes_quantidade'].sum()
 result_5e.index.name = ''
 ax_5e = plt.subplot2grid(grid, (1,3), colspan=1, rowspan=1)
-result_5e.plot.bar(ax=ax_5e, title='e. Unidade técnica agir', fontsize=10)
+ax_5e = result_5e.plot.bar(ax=ax_5e, title='e. Unidade técnica agir', fontsize=10)
+
+for x in ax_5e.patches:
+    ax_5e.annotate(str(int(x.get_height())), (x.get_x()*1.005 + x.get_width()/2,
+                                                          x.get_height()*1.005), fontsize=6, ha='center')
 
 
 plt.show()
