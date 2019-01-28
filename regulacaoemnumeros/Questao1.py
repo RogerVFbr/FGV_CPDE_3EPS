@@ -86,7 +86,6 @@ for each in locs:
     yint.append(int(each))
 plt.yticks(yint)
 
-xint = [x for x in range(1997, 2016, 2)]
 plt.xticks([value for idx, value in enumerate(anos) if idx%2 == 0])
 
 plt.show()
