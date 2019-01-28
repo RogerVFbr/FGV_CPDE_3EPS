@@ -11,6 +11,8 @@ df['AgenciaInt'] = df['Agencia'].apply(lambda x: roman.fromRoman(x)) # Transform
 sns.set()
 fig, axes = plt.subplots(nrows=3, ncols=2, figsize=(10,10))
 plt.subplots_adjust(hspace=0.7)
+fig.suptitle('Questão 4 - Relação entre decisão normativa e:', weight='bold')
+
 
 
 # ===============================================================================================================
@@ -33,7 +35,7 @@ for x in agencias:
                 d_4a[main_index]['OK'] += 1
 
 result_3a = pd.DataFrame.from_dict(d_4a, orient='index')
-result_3a.plot.bar(ax=axes[0,0], title='4a. Decisoes normativas por agencia', fontsize=10)
+result_3a.plot.bar(ax=axes[0,0], title='a. Agência', fontsize=10)
 
 
 # ===============================================================================================================
@@ -55,7 +57,7 @@ for x in anos:
                 d_4b[x]['OK'] += 1
 
 result_4b = pd.DataFrame.from_dict(d_4b, orient='index')
-result_4b.plot.bar(ax=axes[0, 1], title='4b. Decisoes normativas por ano', fontsize=10)
+result_4b.plot.bar(ax=axes[0, 1], title='b. Ano', fontsize=10)
 
 
 # ===============================================================================================================
@@ -78,7 +80,7 @@ for x in relatores:
 
 result_4c = pd.DataFrame.from_dict(d_4c, orient='index')
 large_left_ax = plt.subplot2grid((3,2), (1,0), colspan=2, rowspan=1)
-result_4c.plot.bar(ax=large_left_ax, title='4c. Decisoes normativas por relator', fontsize=10)
+result_4c.plot.bar(ax=large_left_ax, title='c. Relator', fontsize=10)
 
 
 
@@ -101,7 +103,7 @@ for x in unidades:
                 d_4d[x]['OK'] += 1
 
 result_4d = pd.DataFrame.from_dict(d_4d, orient='index')
-result_4d.plot.bar(ax=axes[2,0], title='4d. Decisoes normativas por unidade tecnica', fontsize=10)
+result_4d.plot.bar(ax=axes[2,0], title='d. Unidade técnica', fontsize=10)
 
 
 # ===============================================================================================================
@@ -123,7 +125,7 @@ for x in agir:
                 d_4e[x]['OK'] += 1
 
 result_4e = pd.DataFrame.from_dict(d_4e, orient='index')
-result_4e.plot.bar(ax=axes[2,1], title='4e. Decisoes normativas por unidade tecnica agir', fontsize=10)
+result_4e.plot.bar(ax=axes[2,1], title='e. Unidade técnica agir', fontsize=10)
 
 
 plt.show()

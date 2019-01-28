@@ -11,6 +11,8 @@ df['AgenciaInt'] = df['Agencia'].apply(lambda x: roman.fromRoman(x)) # Transform
 sns.set()
 fig, axes = plt.subplots(nrows=2, ncols=3 , figsize=(10,10))
 plt.subplots_adjust(hspace=0.5)
+fig.suptitle('Questão 3 - Relação entre quantidade de responsáveis e:', weight='bold')
+
 
 
 # ===============================================================================================================
@@ -31,7 +33,7 @@ for x in agencias:
 
 result_3a = pd.DataFrame.from_dict(d_3a, orient='index')
 large_left_ax = plt.subplot2grid((2,3), (0,0), colspan=2, rowspan=1)
-result_3a.plot.bar(legend=False, ax=large_left_ax, title='3a. Responsaveis por agencia por processo', fontsize=10)
+result_3a.plot.bar(legend=False, ax=large_left_ax, title='a. Agência / Processo', fontsize=10)
 
 
 # ===============================================================================================================
@@ -43,7 +45,7 @@ result_3b.index.name = ''
 result_3b = pd.Series(result_3b.index.values, index=result_3b) # Inverter indice com valores
 result_3b = result_3b.apply(int) # Aplicar funcao conversora
 result_3b = pd.Series(result_3b.index.values, index=result_3b) # Reinverter para manter numerais como indice
-title = '3b. Responsaveis por ano (Total: {})'.format(result_3b.sum())
+title = 'b. Ano (Total: {})'.format(result_3b.sum())
 result_3b.plot.bar(legend=False, ax=axes[0,2], title=title, fontsize=10)
 
 
@@ -53,7 +55,7 @@ result_3b.plot.bar(legend=False, ax=axes[0,2], title=title, fontsize=10)
 
 result_3c = df.groupby('Relator')['quant_responsaveis'].sum()
 result_3c.index.name = ''
-result_3c.plot.bar(legend=False, ax=axes[1,0], title='3c. Responsaveis por relator', fontsize=10)
+result_3c.plot.bar(legend=False, ax=axes[1,0], title='c. Relator', fontsize=10)
 
 
 # ===============================================================================================================
@@ -62,7 +64,7 @@ result_3c.plot.bar(legend=False, ax=axes[1,0], title='3c. Responsaveis por relat
 
 result_3d = df.groupby('Unidade_Tecnica_Responsavel')['quant_responsaveis'].sum()
 result_3d.index.name = ''
-result_3d.plot.bar(legend=False, ax=axes[1,1], title='3d. Responsaveis por UT', fontsize=10)
+result_3d.plot.bar(legend=False, ax=axes[1,1], title='d. Unidade técnica', fontsize=10)
 
 
 # ===============================================================================================================
@@ -71,7 +73,7 @@ result_3d.plot.bar(legend=False, ax=axes[1,1], title='3d. Responsaveis por UT', 
 
 result_3e = df.groupby('Unidade_Tecnica_Por_Agir')['quant_responsaveis'].sum()
 result_3e.index.name = ''
-result_3e.plot.bar(legend=False, ax=axes[1,2], title='3e. Responsaveis por UT agir', fontsize=10)
+result_3e.plot.bar(legend=False, ax=axes[1,2], title='e. Unidade técnica agir', fontsize=10)
 
 
 plt.show()

@@ -20,7 +20,6 @@ s = s.apply(roman.toRoman) # Aplicar funcao conversora
 s = pd.Series(s.index.values, index=s) # Reinverter para manter numerais como indice
 s = s.append(pd.Series([s.mean()], index=['Geral']))
 
-print(s)
 sns.set()
-s.plot(kind='bar', title='Media de duracao por agencia', fontsize=10)
+s.plot(kind='bar', title='Questão 2 - Média de duração por agência e total', fontsize=10)
 plt.show()
